@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,15 +33,17 @@ public class MainActivity extends AppCompatActivity {
         List<String> keys = new ArrayList<String>() {{
             add("inputName");
             add("inputNpm");
+            add("inputGender");
         }};
         List<String> values = new ArrayList<>();
 
 
-        EditText inputName = (EditText) findViewById(R.id.inputName);
-        EditText inputNpm = (EditText) findViewById(R.id.inputNpm);
+        EditText inputName = findViewById(R.id.inputName);
+        EditText inputNpm = findViewById(R.id.inputNpm);
+        RadioGroup inputGender = findViewById(R.id.inputGender);
 
         // get widget Button from layout xml
-        Button sendButton = (Button) findViewById(R.id.sendButton);
+        Button sendButton = findViewById(R.id.sendButton);
 
         // add listener to sendButton
         sendButton.setOnClickListener((view) -> {
@@ -60,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     values.add(npm);
+
+                    // gender
+                    RadioButton gender = findViewById(inputGender.getCheckedRadioButtonId());
+                    values.add(gender.getText().toString());
+
+                    // angkatan
+                    // tanggal lahir
+                    // skills
 
                     // create new context (from activity, destination activity)
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);

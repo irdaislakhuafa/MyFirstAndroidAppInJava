@@ -50,7 +50,8 @@
                     android:layout_marginTop="50dp"
                     android:gravity="left"
                     android:textColor="@color/teal_700"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <!-- NPM -->
@@ -71,7 +72,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:textColor="@color/teal_700"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <!-- gender -->
@@ -162,15 +164,17 @@
         </TableLayout>
 
         // back button
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
+
             <Button
+                android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:id="@+id/backButton"
                 android:text="Kembali" />
         </LinearLayout>
     </LinearLayout>

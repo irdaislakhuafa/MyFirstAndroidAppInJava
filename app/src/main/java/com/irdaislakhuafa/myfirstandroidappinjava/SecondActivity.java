@@ -28,6 +28,15 @@ public class SecondActivity extends AppCompatActivity {
         String npm = getIntent().getExtras().getString("inputNpm").toUpperCase();
         showNpm.setText(npm);
 
+        // gender
+        TextView showGender = findViewById(R.id.showGender);
+        String gender = getIntent().getExtras().getString("inputGender");
+        showGender.setText(gender);
+
+        // angkatan
+        // tanggal lahir
+        // skills
+
         // get back button
         Button backButton = findViewById(R.id.backButton);
         // add listener to MainActivity
