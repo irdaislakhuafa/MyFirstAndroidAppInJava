@@ -1,14 +1,27 @@
 package com.irdaislakhuafa.myfirstandroidappinjava;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,23 +30,119 @@ public class MainActivity extends AppCompatActivity {
         showLogs("onCreate");
 
         // get widget EditText from layout xml
-        EditText inputSomething = (EditText) findViewById(R.id.inputSomething);
+//        Student student = new Student();
+//        student.setName((EditText) findViewById(R.id.inputName));
+//        student.setNPM((EditText) findViewById(R.id.inputNpm));
+//        student.setGender((RadioGroup) findViewById(R.id.inputGender));
+//
+//        student.getFromLayout();
+//        student.getName().setTextSize(25);
+
+        List<String> keys = new ArrayList<String>() {{
+            add("inputName");
+            add("inputNpm");
+            add("inputGender");
+            add("inputAngkatan");
+            add("inputDateOfBirth");
+            add("inputSkills");
+        }};
+        List<String> values = new ArrayList<>();
+
+
+        EditText inputName = findViewById(R.id.inputName);
+        EditText inputNpm = findViewById(R.id.inputNpm);
+        RadioGroup inputGender = findViewById(R.id.inputGender);
+        Spinner inputAngkatan = findViewById(R.id.inputAngkatan);
+        Button inputDateOfBirth = findViewById(R.id.inputDateOfBirth);
+        List<CheckBox> inputSkills = new ArrayList<CheckBox>() {{
+            add(findViewById(R.id.inputSkills1));
+            add(findViewById(R.id.inputSkills2));
+            add(findViewById(R.id.inputSkills3));
+        }};
+
+        // angkatan
+        List<String> listAngkatan = new ArrayList<>();
+        int currentYear = new Date().getYear() + 1900;
+        for (int i = (currentYear - 4); i <= currentYear; i++) {
+            listAngkatan.add(String.valueOf(i));
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listAngkatan);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        inputAngkatan.setAdapter(adapter);
+
+        // input date
+        inputDateOfBirth.setOnClickListener((v) -> {
+            Log.d("MyAppMessage", "Input Date has been clicked");
+            Calendar calendar = Calendar.getInstance();
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this,
+                    (datePicker, year, month, day) -> {
+                        inputDateOfBirth.setText(String.format("%s/%s/%s", day, (month + 1), year));
+                    }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+            datePickerDialog.show();
+        });
+
         // get widget Button from layout xml
-        Button sendButton = (Button) findViewById(R.id.sendButton);
+        Button sendButton = findViewById(R.id.sendButton);
 
         // add listener to sendButton
         sendButton.setOnClickListener((view) -> {
-                    String text = inputSomething.getText().toString().trim();
-                    if (text.isEmpty() || text.length() <= 0) {
-                        inputSomething.setHint("Maaf isian ini tidak boleh kosong!");
+                    // check name
+                    String name = inputName.getText().toString().trim();
+                    if (name.isEmpty()) {
+                        inputName.setHint("Nama tidak boleh kosong!");
+                        inputName.setText("");
                         return;
                     }
+                    values.add(name);
+
+                    // check npm
+                    String npm = inputNpm.getText().toString().trim();
+                    if (npm.isEmpty()) {
+                        inputNpm.setHint("NPM tidak boleh kosong!");
+                        inputNpm.setText("");
+                        return;
+                    }
+                    values.add(npm);
+
+                    // gender
+                    RadioButton gender = findViewById(inputGender.getCheckedRadioButtonId());
+                    values.add(gender.getText().toString());
+
+                    // angkatan
+                    String angkatan = String.valueOf(inputAngkatan.getSelectedItem());
+                    values.add(angkatan);
+
+                    // tanggal lahir
+                    String dateOfBirth = inputDateOfBirth.getText().toString();
+                    values.add(dateOfBirth);
+
+                    // skills
+                    String skills = "";
+                    for (CheckBox v : inputSkills) {
+                        if (v.isChecked()) {
+                            skills += v.getText() + ",";
+                        }
+                    }
+                    while (skills.endsWith(",")) {
+                        skills = skills.substring(0, (skills.length() - 1));
+                    }
+                    while (skills.startsWith(",")) {
+                        skills = skills.substring(1, skills.length());
+                    }
+                    skills = skills.replaceAll(",", ", ");
+
+                    values.add(skills);
 
                     // create new context (from activity, destination activity)
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     Bundle bundle = new Bundle();
 
-                    bundle.putString("stringInputSomething", text);
+                    // input to bundle
+                    for (int i = 0; i < keys.size(); i++) {
+                        bundle.putString(keys.get(i), values.get(i));
+                    }
+
                     intent.putExtras(bundle);
 
                     startActivity(intent);
@@ -79,5 +188,16 @@ public class MainActivity extends AppCompatActivity {
 
     private static void showLogs(String value) {
         Log.d("MyAppMessage", "Running method " + value.trim() + "(1412190011)");
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        String item = parent.getItemAtPosition(position).toString();
+//        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
