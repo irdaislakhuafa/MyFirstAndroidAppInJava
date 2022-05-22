@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SecondActivity">
+
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -11,36 +12,35 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
-        <!-- input text-->
-        <EditText
-            android:id="@+id/inputSomething"
+        <!-- to view text from inputSomething -->
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="50dp"
             android:gravity="center"
-            android:hint="Masukan text disini"/>
+            android:paddingTop="20dp"
+            android:text="Your Input Text"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-        <!-- layout button to send text -->
-        <LinearLayout
+        <TextView
+            android:id="@+id/showInputSomething"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical">
+            android:paddingTop="20dp"
+            android:textColor="@color/teal_700"
+            android:textSize="25dp" />
 
-            <!-- button to send text -->
-            <Button
-                android:id="@+id/sendButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:shadowRadius="@integer/material_motion_duration_medium_2"
-                android:text="Send" />
-
-        </LinearLayout>
-
+        <!-- back button to MainActivity -->
+        <Button
+            android:id="@+id/backButtonToMainActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Back" />
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
