@@ -20,8 +20,8 @@
             android:layout_marginHorizontal="20dp"
             android:gravity="center"
             android:paddingTop="20dp"
-            android:text="Your Input Text"
-            android:textColor="@color/black"
+            android:text="Data Anda"
+            android:textColor="@color/teal_700"
             android:textSize="30dp"
             android:textStyle="bold" />
 
