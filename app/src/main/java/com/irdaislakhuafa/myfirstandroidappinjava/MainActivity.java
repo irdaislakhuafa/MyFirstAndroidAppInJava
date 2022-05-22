@@ -3,7 +3,6 @@ package com.irdaislakhuafa.myfirstandroidappinjava;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -23,22 +22,19 @@ public class MainActivity extends AppCompatActivity {
         Button sendButton = (Button) findViewById(R.id.sendButton);
 
         // add listener to sendButton
-        sendButton.setOnClickListener(new View.OnClickListener() {
+        sendButton.setOnClickListener((view) -> {
+                    String text = inputSomething.getText().toString().trim();
 
-            @Override
-            public void onClick(View v) {
-                String text = inputSomething.getText().toString().trim();
+                    // create new context
+                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    Bundle bundle = new Bundle();
 
-                // create new context
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                Bundle bundle = new Bundle();
+                    bundle.putString("stringInputSomething", text);
+                    intent.putExtras(bundle);
 
-                bundle.putString("stringInputSomething", text);
-                intent.putExtras(bundle);
-
-                startActivity(intent);
-            }
-        });
+                    startActivity(intent);
+                }
+        );
     }
 
     @Override
