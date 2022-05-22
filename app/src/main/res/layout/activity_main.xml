@@ -144,6 +144,56 @@
                     android:text="Pilih"
                     android:textStyle="bold" />
             </TableRow>
+
+            // skills
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="14dp"
+                    android:text="Skills"
+                    android:textColor="@color/teal_700"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="5dp">
+
+                    <CheckBox
+                        android:id="@+id/inputSkills1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Java"
+                        android:textColor="@color/teal_700"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/inputSkills2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Go"
+                        android:textColor="@color/teal_700"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/inputSkills3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JavaScript"
+                        android:textColor="@color/teal_700"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </TableRow>
         </TableLayout>
 
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             add("inputGender");
             add("inputAngkatan");
             add("inputDateOfBirth");
+            add("inputSkills");
         }};
         List<String> values = new ArrayList<>();
 
@@ -52,7 +55,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         RadioGroup inputGender = findViewById(R.id.inputGender);
         Spinner inputAngkatan = findViewById(R.id.inputAngkatan);
         Button inputDateOfBirth = findViewById(R.id.inputDateOfBirth);
-
+        List<CheckBox> inputSkills = new ArrayList<CheckBox>() {{
+            add(findViewById(R.id.inputSkills1));
+            add(findViewById(R.id.inputSkills2));
+            add(findViewById(R.id.inputSkills3));
+        }};
 
         // angkatan
         List<String> listAngkatan = new ArrayList<>();
@@ -112,6 +119,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     values.add(dateOfBirth);
 
                     // skills
+                    String skills = inputSkills.stream().map((c)->c.isChecked()? c.getText().toString() : "").collect(Collectors.joining(", "));
+                    values.add(skills);
 
                     // create new context (from activity, destination activity)
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);

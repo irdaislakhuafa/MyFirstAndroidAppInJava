@@ -44,6 +44,10 @@ public class SecondActivity extends AppCompatActivity {
         showDateOfBirth.setText(dateOfBirth);
 
         // skills
+        TextView showSkills = findViewById(R.id.showSkills);
+        String skills = getIntent().getExtras().getString("inputSkills");
+        skills = skills.substring(0, (skills.length() - 2));
+        showSkills.setText(skills);
 
         // get back button
         Button backButton = findViewById(R.id.backButton);
