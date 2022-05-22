@@ -5,42 +5,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
-        <!-- input text-->
-        <EditText
-            android:id="@+id/inputSomething"
+        <!-- to view text from inputSomething -->
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="50dp"
             android:gravity="center"
-            android:hint="Masukan text disini"/>
-
-        <!-- layout button to send text -->
-        <LinearLayout
+            android:text="Your Input Text"
+            android:textSize="30dp"
+            android:paddingTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical">
-
-            <!-- button to send text -->
-            <Button
-                android:id="@+id/sendButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:shadowRadius="@integer/material_motion_duration_medium_2"
-                android:text="Send" />
-
-        </LinearLayout>
-
+            android:text="example"
+            android:textSize="20db"/>
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
