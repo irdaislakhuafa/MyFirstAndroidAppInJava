@@ -41,12 +41,13 @@
                     android:layout_marginTop="50dp"
                     android:gravity="left"
                     android:hint="Masukan nama anda disini"
-                    android:textColor="@color/teal_200"
+                    android:textColor="@color/teal_700"
                     android:textSize="20dp" />
             </TableRow>
 
             <!-- NPM -->
             <TableRow>
+
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -63,36 +64,60 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:hint="Masukan NPM anda disini"
+                    android:textColor="@color/teal_700"
                     android:textSize="20dp" />
             </TableRow>
 
             <!-- gender -->
             <TableRow>
+
                 <TextView
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:text="Gender"
                     android:textColor="@color/teal_700"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
-                <RadioGroup android:paddingLeft="18dp" android:orientation="horizontal">
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pria"
-                            android:id="@+id/inputGenderMale"
-                            android:textColor="@color/teal_700"
-                            android:textSize="20dp" />
+                <RadioGroup
+                    android:id="@+id/inputGender"
+                    android:orientation="horizontal"
+                    android:paddingLeft="18dp">
 
-                        <RadioButton
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Wanita"
-                            android:id="@+id/inputGenderFemale"
-                            android:textColor="@color/teal_700"
-                            android:textSize="20dp" />
+                    <RadioButton
+                        android:id="@+id/inputGenderMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pria"
+                        android:textColor="@color/teal_700"
+                        android:textSize="20dp" />
+
+                    <RadioButton
+                        android:id="@+id/inputGenderFemale"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Wanita"
+                        android:textColor="@color/teal_700"
+                        android:textSize="20dp" />
                 </RadioGroup>
+            </TableRow>
+
+            <!-- angkatan -->
+            <TableRow>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Angkatan"
+                    android:textColor="@color/teal_700"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/inputAngkatan"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
             </TableRow>
         </TableLayout>
 

@@ -8,6 +8,9 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,25 +20,56 @@ public class MainActivity extends AppCompatActivity {
         showLogs("onCreate");
 
         // get widget EditText from layout xml
+//        Student student = new Student();
+//        student.setName((EditText) findViewById(R.id.inputName));
+//        student.setNPM((EditText) findViewById(R.id.inputNpm));
+//        student.setGender((RadioGroup) findViewById(R.id.inputGender));
+//
+//        student.getFromLayout();
+//        student.getName().setTextSize(25);
+
+        List<String> keys = new ArrayList<String>() {{
+            add("inputName");
+            add("inputNpm");
+        }};
+        List<String> values = new ArrayList<>();
+
+
         EditText inputName = (EditText) findViewById(R.id.inputName);
-        inputName.setTextSize(25);
+        EditText inputNpm = (EditText) findViewById(R.id.inputNpm);
+
         // get widget Button from layout xml
         Button sendButton = (Button) findViewById(R.id.sendButton);
 
         // add listener to sendButton
         sendButton.setOnClickListener((view) -> {
-                    String text = inputName.getText().toString().trim();
-                    if (text.isEmpty()) {
-                        inputName.setHint("Maaf isian ini tidak boleh kosong!");
+                    // check name
+                    String name = inputName.getText().toString().trim();
+                    if (name.isEmpty()) {
+                        inputName.setHint("Nama tidak boleh kosong!");
                         inputName.setText("");
                         return;
                     }
+                    values.add(name);
+
+                    // check npm
+                    String npm = inputNpm.getText().toString().trim();
+                    if (npm.isEmpty()) {
+                        inputNpm.setHint("NPM tidak boleh kosong!");
+                        inputNpm.setText("");
+                        return;
+                    }
+                    values.add(npm);
 
                     // create new context (from activity, destination activity)
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     Bundle bundle = new Bundle();
 
-                    bundle.putString("inputName", text);
+                    // input to bundle
+                    for (int i = 0; i < keys.size(); i++) {
+                        bundle.putString(keys.get(i), values.get(i));
+                    }
+
                     intent.putExtras(bundle);
 
                     startActivity(intent);

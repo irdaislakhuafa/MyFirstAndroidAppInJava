@@ -18,19 +18,20 @@ public class SecondActivity extends AppCompatActivity {
         // set layout view activity_second.xml
         setContentView(R.layout.activity_second);
 
-        // get element from second_activity.xml with id showInputSomething
-        TextView showInputSomething = (TextView) findViewById(R.id.showInputSomething);
+        // name
+        TextView showName = findViewById(R.id.showName);
+        String name = getIntent().getExtras().getString("inputName").toUpperCase();
+        showName.setText(name);
 
-        // get string inputSomething from Intent
-        String inputName = getIntent().getExtras().getString("inputName");
-
-        // set text to TextView
-        showInputSomething.setText(inputName);
+        // npm
+        TextView showNpm = findViewById(R.id.showNpm);
+        String npm = getIntent().getExtras().getString("inputNpm").toUpperCase();
+        showNpm.setText(npm);
 
         // get back button
-        Button backButton = (Button) findViewById(R.id.backButtonToMainActivity);
+        Button backButton = findViewById(R.id.backButton);
         // add listener to MainActivity
-        backButton.setOnClickListener((view)->{
+        backButton.setOnClickListener((view) -> {
             Intent intent = new Intent(SecondActivity.this, MainActivity.class);
             startActivity(intent);
         });
