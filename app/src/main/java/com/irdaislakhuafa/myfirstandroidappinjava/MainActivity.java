@@ -17,17 +17,17 @@ public class MainActivity extends AppCompatActivity {
         showLogs("onCreate");
 
         // get widget EditText from layout xml
-        EditText inputSomething = (EditText) findViewById(R.id.inputSomething);
-        inputSomething.setTextSize(25);
+        EditText inputName = (EditText) findViewById(R.id.inputName);
+        inputName.setTextSize(25);
         // get widget Button from layout xml
         Button sendButton = (Button) findViewById(R.id.sendButton);
 
         // add listener to sendButton
         sendButton.setOnClickListener((view) -> {
-                    String text = inputSomething.getText().toString().trim();
+                    String text = inputName.getText().toString().trim();
                     if (text.isEmpty()) {
-                        inputSomething.setHint("Maaf isian ini tidak boleh kosong!");
-                        inputSomething.setText("");
+                        inputName.setHint("Maaf isian ini tidak boleh kosong!");
+                        inputName.setText("");
                         return;
                     }
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     Bundle bundle = new Bundle();
 
-                    bundle.putString("stringInputSomething", text);
+                    bundle.putString("inputName", text);
                     intent.putExtras(bundle);
 
                     startActivity(intent);

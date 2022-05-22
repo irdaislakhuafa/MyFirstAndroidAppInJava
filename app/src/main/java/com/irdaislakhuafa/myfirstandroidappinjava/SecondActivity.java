@@ -22,10 +22,10 @@ public class SecondActivity extends AppCompatActivity {
         TextView showInputSomething = (TextView) findViewById(R.id.showInputSomething);
 
         // get string inputSomething from Intent
-        String inputString = getIntent().getExtras().getString("stringInputSomething");
+        String inputName = getIntent().getExtras().getString("inputName");
 
         // set text to TextView
-        showInputSomething.setText(inputString);
+        showInputSomething.setText(inputName);
 
         // get back button
         Button backButton = (Button) findViewById(R.id.backButtonToMainActivity);
