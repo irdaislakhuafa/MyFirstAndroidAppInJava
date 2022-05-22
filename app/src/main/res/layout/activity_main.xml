@@ -65,6 +65,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:hint="Masukan NPM anda disini"
                     android:textColor="@color/teal_700"
+                    android:inputType="number"
                     android:textSize="20dp" />
             </TableRow>
 
