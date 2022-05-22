@@ -18,17 +18,20 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:gravity="center"
-            android:text="Your Input Text"
-            android:textSize="30dp"
             android:paddingTop="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:text="Your Input Text"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="example"
-            android:textSize="20db"/>
+            android:paddingTop="20dp"
+            android:textSize="25dp"
+            android:textColor="@color/teal_700"
+            android:id="@+id/showInputSomething"/>
 
     </LinearLayout>
 
