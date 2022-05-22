@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -119,7 +118,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     values.add(dateOfBirth);
 
                     // skills
-                    String skills = inputSkills.stream().map((c)->c.isChecked()? c.getText().toString() : "").collect(Collectors.joining(", "));
+                    String skills = "";
+                    for (CheckBox v : inputSkills) {
+                        if (v.isChecked()) {
+                            skills += v.getText() + ",";
+                        }
+                    }
+                    while (skills.endsWith(",")) {
+                        skills = skills.substring(0, (skills.length() - 1));
+                    }
+                    while (skills.startsWith(",")) {
+                        skills = skills.substring(1, skills.length());
+                    }
+                    skills = skills.replaceAll(",", ", ");
+
                     values.add(skills);
 
                     // create new context (from activity, destination activity)

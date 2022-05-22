@@ -45,8 +45,7 @@ public class SecondActivity extends AppCompatActivity {
 
         // skills
         TextView showSkills = findViewById(R.id.showSkills);
-        String skills = getIntent().getExtras().getString("inputSkills");
-        skills = skills.substring(0, (skills.length() - 2));
+        String skills = getIntent().getExtras().getString("inputSkills").trim();
         showSkills.setText(skills);
 
         // get back button
