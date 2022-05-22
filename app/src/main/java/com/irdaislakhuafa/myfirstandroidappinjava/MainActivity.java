@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         sendButton.setOnClickListener((view) -> {
                     String text = inputSomething.getText().toString().trim();
 
-                    // create new context
+                    // create new context (from activity, destination activity)
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     Bundle bundle = new Bundle();
 
