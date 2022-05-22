@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             Log.d("MyAppMessage", "Input Date has been clicked");
             Calendar calendar = Calendar.getInstance();
 
-
             DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this,
                     (datePicker, year, month, day) -> {
                         inputDateOfBirth.setText(String.format("%s/%s/%s", day, (month + 1), year));
