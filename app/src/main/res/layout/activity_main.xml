@@ -117,7 +117,32 @@
                 <Spinner
                     android:id="@+id/inputAngkatan"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd" />
+            </TableRow>
+
+            // tanggal lahir
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Tanggal Lahir"
+                    android:textColor="@color/teal_700"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/inputDate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="50dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Pilih"
+                    android:textStyle="bold" />
             </TableRow>
         </TableLayout>
 
@@ -136,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:shadowRadius="@integer/material_motion_duration_medium_2"
-                android:text="Send" />
+                android:text="kirim" />
 
         </LinearLayout>
 

@@ -34,6 +34,9 @@ public class SecondActivity extends AppCompatActivity {
         showGender.setText(gender);
 
         // angkatan
+        TextView showAngkatan = findViewById(R.id.showAngkatan);
+        String angkatan = getIntent().getExtras().getString("inputAngkatan");
+        showAngkatan.setText(angkatan);
         // tanggal lahir
         // skills
 

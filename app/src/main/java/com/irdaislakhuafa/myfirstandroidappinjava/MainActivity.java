@@ -1,19 +1,28 @@
 package com.irdaislakhuafa.myfirstandroidappinjava;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             add("inputName");
             add("inputNpm");
             add("inputGender");
+            add("inputAngkatan");
         }};
         List<String> values = new ArrayList<>();
 
@@ -41,6 +51,32 @@ public class MainActivity extends AppCompatActivity {
         EditText inputName = findViewById(R.id.inputName);
         EditText inputNpm = findViewById(R.id.inputNpm);
         RadioGroup inputGender = findViewById(R.id.inputGender);
+        Spinner inputAngkatan = findViewById(R.id.inputAngkatan);
+        Button inputDate = findViewById(R.id.inputDate);
+
+
+        // angkatan
+        List<String> listAngkatan = new ArrayList<>();
+        int currentYear = new Date().getYear() + 1900;
+        for (int i = (currentYear - 4); i <= currentYear; i++) {
+            listAngkatan.add(String.valueOf(i));
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listAngkatan);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        inputAngkatan.setAdapter(adapter);
+
+        // input date
+        inputDate.setOnClickListener((v) -> {
+            Log.d("MyAppMessage", "Input Date has been clicked");
+            Calendar calendar = Calendar.getInstance();
+
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this,
+                    (datePicker, year, month, day) -> {
+                        inputDate.setText(String.format("%s/%s/%s", day, (month + 1), year));
+                    }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+            datePickerDialog.show();
+        });
 
         // get widget Button from layout xml
         Button sendButton = findViewById(R.id.sendButton);
@@ -70,7 +106,12 @@ public class MainActivity extends AppCompatActivity {
                     values.add(gender.getText().toString());
 
                     // angkatan
+                    String angkatan = String.valueOf(inputAngkatan.getSelectedItem());
+                    values.add(angkatan);
+
                     // tanggal lahir
+
+
                     // skills
 
                     // create new context (from activity, destination activity)
@@ -127,5 +168,16 @@ public class MainActivity extends AppCompatActivity {
 
     private static void showLogs(String value) {
         Log.d("MyAppMessage", "Running method " + value.trim() + "(1412190011)");
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        String item = parent.getItemAtPosition(position).toString();
+//        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
