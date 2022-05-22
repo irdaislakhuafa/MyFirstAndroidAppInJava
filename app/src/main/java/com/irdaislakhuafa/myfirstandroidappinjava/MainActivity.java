@@ -1,9 +1,13 @@
 package com.irdaislakhuafa.myfirstandroidappinjava;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,6 +16,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         showLogs("onCreate");
+
+        // get widget EditText from layout xml
+        EditText inputSomething = (EditText) findViewById(R.id.inputSomething);
+        // get widget Button from layout xml
+        Button sendButton = (Button) findViewById(R.id.sendButton);
+
+        // add listener to sendButton
+        sendButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String text = inputSomething.getText().toString().trim();
+
+                // create new context
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putString("stringInputSomething", text);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
