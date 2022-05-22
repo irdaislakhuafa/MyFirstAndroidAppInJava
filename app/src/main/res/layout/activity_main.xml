@@ -16,6 +16,16 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="IRDA ISLAKHU AFA (1412190011)"
+            android:gravity="center"
+            android:textColor="@color/teal_700"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"/>
+
         <TableLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
