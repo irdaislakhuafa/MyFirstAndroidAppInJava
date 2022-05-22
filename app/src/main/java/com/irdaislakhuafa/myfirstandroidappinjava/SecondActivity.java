@@ -37,7 +37,12 @@ public class SecondActivity extends AppCompatActivity {
         TextView showAngkatan = findViewById(R.id.showAngkatan);
         String angkatan = getIntent().getExtras().getString("inputAngkatan");
         showAngkatan.setText(angkatan);
+
         // tanggal lahir
+        TextView showDateOfBirth = findViewById(R.id.showDateOfBirth);
+        String dateOfBirth = getIntent().getExtras().getString("inputDateOfBirth");
+        showDateOfBirth.setText(dateOfBirth);
+
         // skills
 
         // get back button

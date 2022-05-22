@@ -12,11 +12,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -44,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             add("inputNpm");
             add("inputGender");
             add("inputAngkatan");
+            add("inputDateOfBirth");
         }};
         List<String> values = new ArrayList<>();
 
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         EditText inputNpm = findViewById(R.id.inputNpm);
         RadioGroup inputGender = findViewById(R.id.inputGender);
         Spinner inputAngkatan = findViewById(R.id.inputAngkatan);
-        Button inputDate = findViewById(R.id.inputDate);
+        Button inputDateOfBirth = findViewById(R.id.inputDateOfBirth);
 
 
         // angkatan
@@ -66,14 +65,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         inputAngkatan.setAdapter(adapter);
 
         // input date
-        inputDate.setOnClickListener((v) -> {
+        inputDateOfBirth.setOnClickListener((v) -> {
             Log.d("MyAppMessage", "Input Date has been clicked");
             Calendar calendar = Calendar.getInstance();
 
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this,
                     (datePicker, year, month, day) -> {
-                        inputDate.setText(String.format("%s/%s/%s", day, (month + 1), year));
+                        inputDateOfBirth.setText(String.format("%s/%s/%s", day, (month + 1), year));
                     }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
             datePickerDialog.show();
         });
@@ -110,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     values.add(angkatan);
 
                     // tanggal lahir
-
+                    String dateOfBirth = inputDateOfBirth.getText().toString();
+                    values.add(dateOfBirth);
 
                     // skills
 

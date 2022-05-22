@@ -136,7 +136,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/inputDate"
+                    android:id="@+id/inputDateOfBirth"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="50dp"
