@@ -25,13 +25,21 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/showInputSomething"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:paddingTop="20dp"
-            android:textSize="25dp"
             android:textColor="@color/teal_700"
-            android:id="@+id/showInputSomething"/>
+            android:textSize="25dp" />
+
+        <!-- back button to MainActivity -->
+        <Button
+            android:id="@+id/backButtonToMainActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Back" />
 
     </LinearLayout>
 

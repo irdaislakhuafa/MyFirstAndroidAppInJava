@@ -1,7 +1,9 @@
 package com.irdaislakhuafa.myfirstandroidappinjava;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -24,5 +26,13 @@ public class SecondActivity extends AppCompatActivity {
 
         // set text to TextView
         showInputSomething.setText(inputString);
+
+        // get back button
+        Button backButton = (Button) findViewById(R.id.backButtonToMainActivity);
+        // add listener to MainActivity
+        backButton.setOnClickListener((view)->{
+            Intent intent = new Intent(SecondActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 }
