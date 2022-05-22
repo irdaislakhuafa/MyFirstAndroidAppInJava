@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
         // add listener to sendButton
         sendButton.setOnClickListener((view) -> {
                     String text = inputSomething.getText().toString().trim();
+                    if (text.isEmpty() || text.length() <= 0) {
+                        inputSomething.setHint("Maaf isian ini tidak boleh kosong!");
+                        return;
+                    }
 
                     // create new context (from activity, destination activity)
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
